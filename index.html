@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Streaks</title>
+
+    <style>
+        html, body{
+            width: 100%;
+            height: 100%;
+        }
+        body{
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <h4>Welcome to all your streaks</h4>
+    <h4 id="date-string"></h4>
+
+    <p>Your total streak is...</p>
+    <h2 id="streak-count"></h2>
+</body>
+
+<script>
+
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    setInterval(() => {
+
+        var date1 = new Date("11/01/2020"); 
+        var date2 = new Date(); 
+        
+        // To calculate the time difference of two dates 
+        var Difference_In_Time = date2.getTime() - date1.getTime(); 
+        
+        // To calculate the no. of days between two dates 
+        var Difference_In_Days = Math.floor(Difference_In_Time / (1000 * 3600 * 24)); 
+
+        const dateString = `Streak started on ${date1.getDate()} ${monthNames[date1.getMonth()]}, ${date1.getFullYear()}`;
+        // const timeString = `Total time: ${date2.getHours()} Hrs: ${date2.getMinutes()} Mins: ${date2.getSeconds()} Secs`;
+        const streakCount = `${Difference_In_Days} days and ${date2.getHours()} Hrs: ${date2.getMinutes()} Mins: ${date2.getSeconds()} Secs`;
+
+        document.getElementById('date-string').innerText = dateString;
+        document.getElementById('streak-count').innerText = streakCount;
+        
+    }, 1000);
+    
+
+</script>
+</html>
